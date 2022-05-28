@@ -1,9 +1,8 @@
-const getAllElementsAPI = "https://script.google.com/macros/s/AKfycbz0724tRW5GKyzBWxNogOH5TTsISZek9bJnApswODDsnYTOrVY3gexXHaiVpt4Wi6bPZA/exec";
+const getAllElementsAPI = sessionStorage.getItem("HTML Elements");
+
 async function fetchHTMLElements(url) {
     const response = await fetch(url);
     var data = await response.json();
-
-    console.log(data.data);
 
     for (var obj in data.data) {
         let cardTitle = '';
