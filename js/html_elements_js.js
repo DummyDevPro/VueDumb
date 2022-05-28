@@ -29,7 +29,10 @@ async function fetchHTMLElements(url) {
         }
 
         // Element detail
-        eleDetail = data.data[obj].Detail;
+        let detailSplitArr = (data.data[obj].Detail).split('\n');
+        for(var sp in detailSplitArr){
+            eleDetail += detailSplitArr[sp] + '<br>';
+        }
 
         composeHTML = '<div class="col-md-6 col-12">';
         composeHTML += '<div class="card">';
@@ -42,7 +45,11 @@ async function fetchHTMLElements(url) {
         
         document.getElementById('loading_layout_id').style.display = 'none';
         document.getElementById('html_elements_id').innerHTML += composeHTML;
+        await sleep(100);
     }
 
 }
+
+const sleep = ms => new Promise(res => setTimeout(res, ms))
+
 fetchHTMLElements(getAllElementsAPI);
