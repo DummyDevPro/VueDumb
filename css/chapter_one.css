@@ -1,0 +1,19 @@
+.border_right_dot {
+    border-right: 1px dotted gray;
+}
+.border_up_down {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.font_large {
+    font-size: 3rem;
+}
+
+.p_3 {
+    padding: 0 0.5rem;
+}
+
+.border_all {
+    border: 1px solid gray;
+}

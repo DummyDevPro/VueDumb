@@ -1,3 +1,7 @@
 a {
     text-decoration: none;
 }
+
+ul.root_ul > li:not(:last-child) { 
+    margin-bottom: 2rem;  
+ }

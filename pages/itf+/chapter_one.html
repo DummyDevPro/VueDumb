@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../css/chapter_one.css">
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <title>コンピューターのしくみ</title>
+</head>
+
+<body ng-app="myApp">
+
+    <div class="container" ng-controller="myCtrl">
+
+        <h1 class="border_up_down">
+            <span class="border_right_dot font_large p_3">①</span>
+            コンピューターのしくみ
+        </h1>
+
+        <h2 class="mt-4 mb-4">単語リスト</h2>
+        <p class="text-muted">覚えましょう</p>
+
+        <section>
+            <label>Search: <input ng-model="searchText" class="ms-2"></label>
+        </section>
+
+        <!-- <section class="mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <div class="p-3">
+                        <p class="font_large">開発</p>
+                    </div>
+
+                    <div class="p-3">
+                        <input type="text" placeholder="回答を記入してください。">
+                    </div>
+
+                    <div class="p-3 d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary me-3">⇦</button>
+                        <button type="button" class="btn btn-secondary">⇨</button>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <div class="table-responsive">
+            <table id="example" class="table table-hover table-md" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">漢字</th>
+                        <th scope="col">読み</th>
+                        <th scope="col">意味</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="dataList.length <= 0 || filterResult.length <= 0">
+                        <td colspan="4" style="text-align: center;">
+                            No data available in table
+                        </td>
+                    </tr>
+                    </tr>
+                    <tr ng-repeat="obj in dataList | filter : searchText:strict as filterResult">
+                    </tr>
+                    <tr ng-repeat="data in filterResult | limitTo : limit : startPos">
+                        <th scope="row">{{ startPos + $index + 1}}</th>
+                        <td>{{data.Kanji}}</td>
+                        <td>{{data.Yomi}}</td>
+                        <td>{{data.Mean}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">漢字</th>
+                        <th scope="col">読み</th>
+                        <th scope="col">意味</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item" ng-class="prevActiveState">
+                    <a href="" class="page-link" ng-click="pageMinus()">Previous</a>
+                </li>
+
+                <li ng-show="pageNoCnt > 0" ng-repeat="x in [].constructor(pageNoCnt) track by $index" class="page-item"
+                    ng-class="{'active' : pageMoveCnt == $index + 1}">
+                    <a class="page-link" href="" ng-click="loadPageByNo($index)"> {{ $index + 1 }} </a>
+                </li>
+
+                <li class="page-item" ng-class="nextActiveState">
+                    <a href="" class="page-link" ng-click="pagePlus()">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+        {{calculatePageCount()}}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller('myCtrl', function ($scope, $http) {
+            $scope.hide = true;
+            $scope.filterResult = [];
+            $scope.paginationCount = 0;
+            $scope.dataList = [];
+            $scope.prevActiveState = 'disabled';
+            $scope.nextActiveState = 'disabled';
+            $scope.pageNoCnt = 0;
+
+            // Fetch data from API
+            $http.get(
+                    "https://script.google.com/macros/s/AKfycbz8OCRZO_166Ac99OUoXqr7nEORz3gL5JDYSTUAoB9DRwDDyQjcljXvzKlRXSFR4Tz9rg/exec?key=c_term_chp_one"
+                )
+                .then(function (response) {
+                    $scope.pagelimit = 5;
+                    $scope.limit = 10;
+                    $scope.startPos = 0;
+                    $scope.dataListOrigin = response.data.data;
+                    $scope.dataList = $scope.dataListOrigin;
+                    $scope.filterResult = $scope.dataListOrigin;
+                    $scope.pageMoveCnt = 1;
+
+                    if ($scope.dataList.length > 0) {
+                        $scope.pageNoCnt = Math.ceil($scope.dataList.length / $scope.limit);
+                        if ($scope.pageNoCnt > 1) {
+                            $scope.nextActiveState = '';
+                        }
+                    }
+                });
+
+            // Previous Button Click
+            $scope.pageMinus = function () {
+                let tmp = $scope.pageMoveCnt - 1;
+                if (tmp > 0) {
+                    $scope.startPos -= $scope.limit;
+                    $scope.pageMoveCnt--;
+
+                    $scope.changePreNextActiveStatus(tmp);
+                }
+
+                if (tmp == 1 || tmp < 0) {
+                    $scope.prevActiveState = 'disabled';
+                }
+            }
+
+            // Next Button Click
+            $scope.pagePlus = function () {
+                let tmp = $scope.pageMoveCnt + 1;
+                if (tmp <= $scope.pageNoCnt) {
+                    $scope.startPos += $scope.limit;
+                    $scope.pageMoveCnt++;
+
+                    $scope.changePreNextActiveStatus(tmp);
+                }
+
+                if (tmp == $scope.pageNoCnt) {
+                    $scope.nextActiveState = 'disabled';
+                }
+            }
+
+            // When clicking page number
+            $scope.loadPageByNo = function (pageNo) {
+                $scope.pageMoveCnt = pageNo + 1;
+                $scope.startPos = pageNo * $scope.limit;
+
+                $scope.changePreNextActiveStatus($scope.pageMoveCnt);
+            }
+
+            // After clicked (Previous or Next Button) , change their active state 
+            $scope.changePreNextActiveStatus = function (num) {
+                if (num < $scope.pageNoCnt) {
+                    $scope.nextActiveState = '';
+                } else {
+                    $scope.nextActiveState = 'disabled';
+                }
+                if (num > 1) {
+                    $scope.prevActiveState = '';
+                } else {
+                    $scope.prevActiveState = 'disabled';
+                }
+            }
+
+            // Input Text Change 
+            $scope.calculatePageCount = function () {
+                if ($scope.filterResult.length > 0) {
+                    $scope.pageNoCnt = Math.ceil($scope.filterResult.length / $scope.limit);
+
+                    if ($scope.pageMoveCnt > $scope.pageNoCnt) {
+                        $scope.pageMoveCnt = 1;
+                        $scope.startPos = 0;
+                    }
+
+                    if ($scope.pageNoCnt > 1 && $scope.pageMoveCnt != $scope.pageNoCnt) {
+                        $scope.nextActiveState = '';
+                    }else{
+                        $scope.nextActiveState = 'disabled';
+                    }
+
+                    if ($scope.pageMoveCnt == 1) {
+                        $scope.prevActiveState = 'disabled';
+                    }else{
+                        $scope.prevActiveState = '';
+                    }
+
+                } else {
+                    $scope.pageNoCnt = 0;
+                    $scope.prevActiveState = 'disabled';
+                    $scope.nextActiveState = 'disabled';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
