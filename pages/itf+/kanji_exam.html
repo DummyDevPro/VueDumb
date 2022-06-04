@@ -124,7 +124,6 @@
     <script>
         const getComputerTermsChapterOneAPI = sessionStorage.getItem("Computer Terms Chapter One");
         const saveExamDataAPI = sessionStorage.getItem("Save Kanji Exam Result");
-        const getLoginActionAPI = sessionStorage.getItem("Login Action");
 
         var app = angular.module("myApp", []);
 
@@ -203,33 +202,7 @@
                 return array;
             }
 
-            $scope.goResult = function () {
-                var conf = {
-                    headers: {
-                        "Content-type": undefined
-                    },
-                    transformRequest: null
-                };
-                var fd = new FormData();
-                fd.append('stdId', 'IDID');
-                fd.append('password', 'BLAHBLAH');
-
-                $http.post(
-                    saveExamDataAPI,
-                    fd,
-                    conf
-                ).then(function (success) {
-                    console.log(success);
-                }, function (error) {
-                    console.log(error);
-                });
-            }
             // $scope.goResult = function () {
-            //     // for (let d in $scope.randomData30) {
-            //     //     if (($scope.randomData30[d]).correct > 0) {
-            //     //         $scope.yourMark += 1;
-            //     //     }
-            //     // }
             //     var conf = {
             //         headers: {
             //             "Content-type": undefined
@@ -237,25 +210,51 @@
             //         transformRequest: null
             //     };
             //     var fd = new FormData();
-            //     // fd.append('startDateTime', $scope.date);
-            //     // fd.append('examResult', JSON.stringify($scope.randomData30));
-            //     // fd.append('endDateTime', new Date());
-            //     // fd.append('loginId', sessionStorage.getItem("loginId"));
-            //     // fd.append('nameEn', sessionStorage.getItem("nameEn"));
-            //     // fd.append('nameJp', sessionStorage.getItem("nameJp"));
-            //     // fd.append('yourMark', $scope.yourMark);
-            //     // fd.append('questionTotal', $scope.lastPos);
+            //     fd.append('stdId', 'IDID');
+            //     fd.append('password', 'BLAHBLAH');
+
             //     $http.post(
             //         saveExamDataAPI,
             //         fd,
             //         conf
             //     ).then(function (success) {
             //         console.log(success);
-            //         // window.location.replace("./result.html");
             //     }, function (error) {
-            //         console.error(error);
+            //         console.log(error);
             //     });
             // }
+            $scope.goResult = function () {
+                // for (let d in $scope.randomData30) {
+                //     if (($scope.randomData30[d]).correct > 0) {
+                //         $scope.yourMark += 1;
+                //     }
+                // }
+                var conf = {
+                    headers: {
+                        "Content-type": undefined
+                    },
+                    transformRequest: null
+                };
+                var fd = new FormData();
+                fd.append('startDateTime', $scope.date);
+                fd.append('examResult', JSON.stringify($scope.randomData30));
+                fd.append('endDateTime', new Date());
+                fd.append('loginId', sessionStorage.getItem("loginId"));
+                fd.append('nameEn', sessionStorage.getItem("nameEn"));
+                fd.append('nameJp', sessionStorage.getItem("nameJp"));
+                fd.append('yourMark', $scope.yourMark);
+                fd.append('questionTotal', $scope.lastPos);
+                $http.post(
+                    saveExamDataAPI,
+                    fd,
+                    conf
+                ).then(function (success) {
+                    console.log(success);
+                    // window.location.replace("./result.html");
+                }, function (error) {
+                    console.error(error);
+                });
+            }
         });
     </script>
 </body>
