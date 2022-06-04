@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Kanji Exam</title>
+
+    <style>
+        .fs-large {
+            font-size: 3rem;
+        }
+
+        .div-circle {
+            display: flex;
+            width: 4rem;
+            height: 4rem;
+            align-self: center;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .div-circle-replace {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .fs-large {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body ng-app="myApp">
+    <div class="container" ng-controller="myCtrl">
+        <section>
+            <div class="d-flex justify-content-center m-4">
+                <p class="fs-4">
+                    {{ curPos + 1 }} / {{ lastPos + 1 }}
+                </p>
+            </div>
+            <div class="d-flex justify-content-center m-4">
+                <div class="col-lg-6 col-md-8 col-10">
+                    <div class="d-flex justify-content-between">
+                        <a ng-show="curPos > 0" href="" class="btn btn-danger btn-lg div-circle" role="button"
+                            ng-click="goPrev()">
+                            戻
+                        </a>
+                        <div ng-show="curPos == 0" class="div-circle-replace"></div>
+                        <p class="fs-large">
+                            {{ testData[curPos].Kanji }}
+                        </p>
+                        <a ng-hide="curPos == lastPos || testData.length == 0" href=""
+                            class="btn btn-primary btn-lg div-circle" role="button" ng-click="goNext()">
+                            次
+                        </a>
+                        <!-- Link trigger modal -->
+                        <a ng-show="curPos == lastPos" href="" class="btn btn-success btn-lg div-circle" role="button"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            完
+                        </a>
+                        <!-- ng-click="reportAnswer()" -->
+                        <!-- <div ng-show="curPos == lastPos" class="div-circle-replace"></div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="col-lg-6 col-md-8 col-10">
+                    <input class="form-control" type="text" placeholder="回答を記入してください。" aria-label="回答を記入してください。"
+                        ng-model="answerData" ng-change="typingAnswer(answerData)">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">完了</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            試験完了しますか？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
+                            <button type="button" class="btn btn-primary" ng-click="goResult()">はい</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- This is coding test (randomData30) -->
+        <!-- <section>
+            <table class="table table-hover table-md">
+                <tr ng-repeat="dd in randomData30">
+                    <td>{{ dd.question }}</td>
+                    <td>{{ dd.yourAnswer }}</td>
+                    <td>{{ dd.correct }}</td>
+                </tr>
+            </table>
+        </section> -->
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script>
+        const getComputerTermsChapterOneAPI = sessionStorage.getItem("Computer Terms Chapter One");
+        const saveExamDataAPI = sessionStorage.getItem("Save Kanji Exam Result");
+        const getLoginActionAPI = sessionStorage.getItem("Login Action");
+
+        var app = angular.module("myApp", []);
+
+        app.controller('myCtrl', function ($scope, $http) {
+
+            $scope.curPos = 0;
+            $scope.lastPos = 4;
+            $scope.testData = [];
+            $scope.date = '';
+            $scope.yourMark = 0;
+
+            $scope.randomData30 = [];
+            /* {
+             "question" : "漢字" 
+             "yourAnswer" : "かんじ"
+             "correct" : -1 / 0 / 1 ( -1 : unknown / 0 : false / 1 : true)
+            } */
+
+            // Fetch data from API
+            $http.get(getComputerTermsChapterOneAPI)
+                .then(function (response) {
+                    $scope.testData = $scope.shuffle(response.data.data);
+                    $scope.date = new Date();
+                });
+
+            // go next question
+            $scope.goNext = function () {
+                $scope.curPos += 1;
+                if ($scope.randomData30[$scope.curPos]) {
+                    $scope.answerData = ($scope.randomData30[$scope.curPos]).yourAnswer;
+                } else {
+                    $scope.answerData = '';
+                }
+
+                if (($scope.randomData30).length - 1 < $scope.curPos) {
+                    $scope.randomData30.push({
+                        "question": $scope.testData[$scope.curPos].Kanji,
+                        "yourAnswer": "",
+                        "correct": -1
+                    });
+                }
+            }
+
+            // go previous question
+            $scope.goPrev = function () {
+                $scope.curPos -= 1;
+                $scope.answerData = ($scope.randomData30[$scope.curPos]).yourAnswer;
+            }
+
+            // listen when you typing answer
+            $scope.typingAnswer = function (data) {
+                if ($scope.curPos <= ($scope.randomData30).length) {
+                    $scope.randomData30[$scope.curPos] = {
+                        "question": $scope.testData[$scope.curPos].Kanji,
+                        "yourAnswer": data,
+                        "correct": ($scope.testData[$scope.curPos].Yomi == data) || ($scope.testData[
+                            $scope.curPos].Romaji == data)
+                    };
+                } else {
+                    ($scope.randomData30).push({
+                        "question": $scope.testData[$scope.curPos].Kanji,
+                        "yourAnswer": data,
+                        "correct": ($scope.testData[$scope.curPos].Yomi == data) || ($scope
+                            .testData[$scope.curPos].Romaji == data)
+                    });
+                }
+            }
+
+
+            // generate random array 
+            $scope.shuffle = ([...array]) => {
+                for (let i = array.length - 1; i >= 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            $scope.goResult = function () {
+                var conf = {
+                    headers: {
+                        "Content-type": undefined
+                    },
+                    transformRequest: null
+                };
+                var fd = new FormData();
+                fd.append('stdId', 'IDID');
+                fd.append('password', 'BLAHBLAH');
+
+                $http.post(
+                    saveExamDataAPI,
+                    fd,
+                    conf
+                ).then(function (success) {
+                    console.log(success);
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+            // $scope.goResult = function () {
+            //     // for (let d in $scope.randomData30) {
+            //     //     if (($scope.randomData30[d]).correct > 0) {
+            //     //         $scope.yourMark += 1;
+            //     //     }
+            //     // }
+            //     var conf = {
+            //         headers: {
+            //             "Content-type": undefined
+            //         },
+            //         transformRequest: null
+            //     };
+            //     var fd = new FormData();
+            //     // fd.append('startDateTime', $scope.date);
+            //     // fd.append('examResult', JSON.stringify($scope.randomData30));
+            //     // fd.append('endDateTime', new Date());
+            //     // fd.append('loginId', sessionStorage.getItem("loginId"));
+            //     // fd.append('nameEn', sessionStorage.getItem("nameEn"));
+            //     // fd.append('nameJp', sessionStorage.getItem("nameJp"));
+            //     // fd.append('yourMark', $scope.yourMark);
+            //     // fd.append('questionTotal', $scope.lastPos);
+            //     $http.post(
+            //         saveExamDataAPI,
+            //         fd,
+            //         conf
+            //     ).then(function (success) {
+            //         console.log(success);
+            //         // window.location.replace("./result.html");
+            //     }, function (error) {
+            //         console.error(error);
+            //     });
+            // }
+        });
+    </script>
+</body>
+
+</html>

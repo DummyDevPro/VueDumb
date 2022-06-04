@@ -50,14 +50,14 @@ async function fetchHTMLElements(url) {
                         eleDetail += detailSplitArr[sp] + '<br>';
                     }
 
-                    composeHTML = '<div class="col-md-6 col-12">';
+                    composeHTML = '<div class="col-12">';
                     composeHTML += '<div class="card">';
                     composeHTML += '<div class="card-body">';
                     composeHTML += '<h5 class="card-title">' + cardTitle;
                     composeHTML += '<span class="badge ' + eleDisplayTypeColorTextCode + ' ms-1">' + eleDisplayType + '</span>';
                     composeHTML += '</h5><hr>';
                     composeHTML += '<h6 class="card-subtitle mb-2 text-muted">' + cardSubTitle + '</h6>';
-                    composeHTML += '<p class="card-text">' + eleDetail + '</p></div></div></div>';
+                    composeHTML += '<div class="card-text">' + eleDetail + '</div></div></div></div>';
                     document.getElementById('html_elements_id').innerHTML += composeHTML;
                     // await sleep(150);
                 }
