@@ -64,7 +64,7 @@
                         </a>
                         <!-- Link trigger modal -->
                         <a ng-show="curPos == lastPos" href="" class="btn btn-success btn-lg div-circle" role="button"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            data-bs-toggle="modal" data-bs-target="#confirmModal">
                             完
                         </a>
                         <!-- ng-click="reportAnswer()" -->
@@ -82,12 +82,12 @@
 
         <section>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">完了</h5>
+                            <h5 class="modal-title" id="confirmModalLabel">完了</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -125,10 +125,11 @@
     <script>
         const getComputerTermsChapterOneAPI = sessionStorage.getItem("Computer Terms Chapter One");
         const saveExamDataAPI = sessionStorage.getItem("Save Kanji Exam Result");
+        const getLoginActionAPI = sessionStorage.getItem("Login Action");
 
         var app = angular.module("myApp", []);
 
-        app.controller('myCtrl', function ($scope, $http) {
+        app.controller('myCtrl', function ($scope, $http, $timeout, $filter) {
 
             $scope.curPos = 0;
             $scope.lastPos = 4;
@@ -148,6 +149,8 @@
                 .then(function (response) {
                     $scope.testData = $scope.shuffle(response.data.data);
                     $scope.date = new Date();
+                    $scope.formatedStartDate = $filter("date")($scope.date,
+                        "dd'日'MM'月'yyyy'年' HH'時'mm'分'ss'秒'");
                 });
 
             // go next question
@@ -203,33 +206,12 @@
                 return array;
             }
 
-            // $scope.goResult = function () {
-            //     var conf = {
-            //         headers: {
-            //             "Content-type": undefined
-            //         },
-            //         transformRequest: null
-            //     };
-            //     var fd = new FormData();
-            //     fd.append('stdId', 'IDID');
-            //     fd.append('password', 'BLAHBLAH');
-
-            //     $http.post(
-            //         saveExamDataAPI,
-            //         fd,
-            //         conf
-            //     ).then(function (success) {
-            //         console.log(success);
-            //     }, function (error) {
-            //         console.log(error);
-            //     });
-            // }
             $scope.goResult = function () {
-                // for (let d in $scope.randomData30) {
-                //     if (($scope.randomData30[d]).correct > 0) {
-                //         $scope.yourMark += 1;
-                //     }
-                // }
+                for (let d in $scope.randomData30) {
+                    if (($scope.randomData30[d]).correct > 0) {
+                        $scope.yourMark += 1;
+                    }
+                }
                 var conf = {
                     headers: {
                         "Content-type": undefined
@@ -237,26 +219,55 @@
                     transformRequest: null
                 };
                 var fd = new FormData();
-                fd.append('startDateTime', $scope.date);
+                var endDate = new Date();
+                $scope.formatedEndDate = $filter("date")(endDate, "dd'日'MM'月'yyyy'年' HH'時'mm'分'ss'秒'");
+
+                fd.append('startDateTime', $scope.formatedStartDate);
                 fd.append('examResult', JSON.stringify($scope.randomData30));
-                fd.append('endDateTime', new Date());
+                fd.append('endDateTime', $scope.formatedEndDate);
                 fd.append('loginId', sessionStorage.getItem("loginId"));
                 fd.append('nameEn', sessionStorage.getItem("nameEn"));
                 fd.append('nameJp', sessionStorage.getItem("nameJp"));
                 fd.append('yourMark', $scope.yourMark);
-                fd.append('questionTotal', $scope.lastPos);
+                fd.append('questionTotal', $scope.lastPos + 1);
+
+                sessionStorage.setItem("startDateTime", $scope.formatedStartDate);
+                sessionStorage.setItem("endDateTime", $scope.formatedEndDate);
+
+                sessionStorage.setItem("yourMark", $scope.yourMark);
+                sessionStorage.setItem("questionTotal", $scope.lastPos + 1);
+
+                sessionStorage.setItem("nameEn", sessionStorage.getItem("nameEn"));
+                sessionStorage.setItem("nameJp", sessionStorage.getItem("nameJp"));
+
+                sessionStorage.setItem("examResult", $scope.randomData30);
+
+                console.log($scope.formatedStartDate);
+                console.log($scope.formatedEndDate);
                 $http.post(
                     saveExamDataAPI,
                     fd,
                     conf
                 ).then(function (success) {
-                    console.log(success);
-                    // window.location.replace("./result.html");
+                    // TODO
+                    // var element = document.getElementById("confirmModal");
+                    // element.modal('hide')
+                    // element.style.display = 'none';
+                    // hideModal();
+                    $timeout(function () {
+                        window.location.replace("./result.html");
+                    }, 3000);
                 }, function (error) {
                     console.error(error);
                 });
             }
         });
+
+
+        // TODO
+        // function hideModal() {
+        //     $('#confirmModal').modal('hide');
+        // }
     </script>
 </body>
 

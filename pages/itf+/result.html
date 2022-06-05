@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" href="../../img/gaigo-logo-only.png" type="image/x-icon">
-    <title>試験結果</title>
+    <title>試験結果 | プログラミング用語</title>
     <style>
         h1 {
             text-align: center;
@@ -14,8 +16,57 @@
     </style>
 </head>
 
-<body>
-    <h1>漢字試験結果</h1>
+<body ng-app="myApp">
+    <div class="container" ng-controller="myCtrl">
+        <section>
+            <h1>漢字試験結果</h1>
+        </section>
+        <section>
+            <div class="text-center m-3">
+                <label class="fs-4">{{nameEn}}</label>
+                <p class="fs-6">{{nameJp}}</p>
+            </div>
+            <div class="text-center m-3">
+                <label class="fs-4">点数：</label>
+                <label class="fs-4">{{yourMark}} / {{questionTotal}}</label>
+            </div>
+            <div class="text-center m-3">
+                <label class="fs-4">開始</label>
+                <p class="fs-6">{{startTime}}</p>
+            </div>
+            <div class="text-center m-3">
+                <label class="fs-4">終了</label>
+                <p class="fs-6">{{endTime}}</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script>
+        var yourMark = sessionStorage.getItem("yourMark");
+        var nameEn = sessionStorage.getItem("nameEn");
+        var nameJp = sessionStorage.getItem("nameJp");
+        var startTime = sessionStorage.getItem("startDateTime");
+        var endTime = sessionStorage.getItem("endDateTime");
+        var questionTotal = sessionStorage.getItem("questionTotal");
+        var app = angular.module("myApp", []);
+
+        app.controller('myCtrl', function ($scope) {
+            $scope.yourMark = yourMark;
+            $scope.nameEn = nameEn;
+            $scope.nameJp = nameJp;
+            $scope.startTime = startTime;
+            $scope.endTime = endTime;
+            $scope.questionTotal = questionTotal;
+        });
+    </script>
 </body>
 
 </html>
