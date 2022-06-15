@@ -1,0 +1,50 @@
+.v-c {
+    margin-top: calc(48vh);
+    transform: translate(0, -50%);
+}
+
+
+.fs-large {
+    font-size: 3rem;
+}
+
+.div-circle {
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.div-circle-replace {
+    width: 4rem;
+    height: 4rem;
+}
+
+@media (max-width: 767.98px) {
+    .fs-large {
+        font-size: 2rem;
+    }
+}
+
+.load-icon-size {
+    width: 36px;
+}
+
+.load-rotate {
+    display: table;
+    margin: 0 auto;
+    animation: rotation 1.5s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
