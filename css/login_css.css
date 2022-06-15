@@ -1,0 +1,16 @@
+.v-c {
+    margin-top: calc(48vh);
+    transform: translate(0, -50%);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

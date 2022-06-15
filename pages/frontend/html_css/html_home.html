@@ -14,49 +14,71 @@
 </head>
 
 <body>
+
     <div class="container">
-        <hr>
         <section class="m-2">
-            <h1>
+            <h1 class="border-btm">
                 HTML
             </h1>
-            <p class="text-muted clean_text_heigh">
-                HTML means HyperText Markup Language,
-                which is used for creating web pages(documents).
-            </p>
+            <blockquote class="blockquote">
+                <p class="text-muted">HTML means HyperText Markup Language,
+                    which is used for creating web pages(documents).</p>
+            </blockquote>
         </section>
-        <hr>
 
-        <section class="m-4">
-            <h2>
-                HTML &gt; Elements
+        <section class="m-2 mt-4">
+            <h2 class="border-btm">
+                HTML Elements
             </h2>
-            <p class="text-muted clean_text_heigh">
-                Basic component for HTML document and represents semantics, or meaning.
-                <br>
-                e.g. &lt; title &gt; Element represents the title of the document.
+
+            <blockquote class="blockquote">
+                <p class="text-muted">
+                    Basic component for HTML document and represents semantics, or meaning.
+                    <br>
+                    e.g. <code>&lt;title&gt;</code> Element represents the title of the document.
                     <br>
                     Most HTML elements are written with a start tag (or opening tag) and an end tag (or closing tag),
                     with content in between.
                     <br>
                     ※Some HTML elements have only a start tag (or opening tag), are called void elements or empty
                     elements.
-            </p>
+                </p>
+            </blockquote>
         </section>
-        <div class="row g-3 m-2" id="html_elements_id">
-            <div class="text-center" id="loading_layout_id">
-                <button class="btn btn-primary" type="button" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Data Collecting...
-                </button>
+
+        <section class="m-2 mt-4">
+            <h2 class="border-btm">
+                HTML Elements Grouping
+            </h2>
+            <div class="row g-3 mt-2">
+                <div class="col-6 zoom-in">
+                    <div class="p-4 border bg-light">
+                        <p class="h4">HTML Text</p>
+                        <span>Formatting text(bold, italic, etc) display on website.</span>
+                    </div>
+                </div>
+                <div class="col-6 zoom-in">
+                    <div class="p-4 border bg-light">
+                        <p class="h4">HTML List</p>
+                        <span>Display information as list style.</span>
+                    </div>
+                </div>
+                <div class="col-6 zoom-in">
+                    <div class="p-4 border bg-light">
+                        <p class="h4">HTML Table</p>
+                        <span>Display information as table view.</span>
+                    </div>
+                </div>
+                <div class="col-6 zoom-in">
+                    <div class="p-4 border bg-light">
+                        <p class="h4">HTML Form</p>
+                        <span>Display information as table view.</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="../../../js/html_home_js.js"></script>
 </body>
 
 </html>
