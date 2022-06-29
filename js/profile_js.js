@@ -11,7 +11,7 @@ var emailAddress = userInfo != null ? userInfo.mail_address : 'example@gmail.com
 var examHistoryAPI = sessionStorage.getItem('JS Exam Data History');
 
 var app = angular.module("myApp", []);
-app.controller('myCtrl', function ($scope, $http, $timeout) {
+app.controller('myCtrl', function ($scope, $http) {
     $scope.tableDataMessage = 'Collecting your exam history...';
     $scope.loginStatus = loginStatus;
     $scope.userNameEn = userNameEn;
@@ -26,6 +26,12 @@ app.controller('myCtrl', function ($scope, $http, $timeout) {
         alert('Unauthorized Access!');
         window.location.replace('../../../../index.html');
         return;
+    }
+
+    $scope.passExamDataBySessionStorage = function(data) {
+        sessionStorage.setItem('fromProfile',true);
+        sessionStorage.setItem('examDetail' , JSON.stringify(data));
+        window.location.href = '../frontend/exam/js_exm_detail.html';
     }
 
     $scope.getExamDataHistory = function (userId) {

@@ -59,3 +59,11 @@ body {
 .memo-text-shadow {
     text-shadow: .5rem 0px .75rem rgba(0, 0, 0, 1);
 }
+
+.detail-icon-link {
+    cursor: pointer;
+}
+
+.detail-icon-link:hover {
+    color: #d32f2f;
+}
