@@ -1,0 +1,61 @@
+/* html {
+    height: 100%;
+} */
+body {
+    margin: 0px;
+    /* height: 97%;
+    background: linear-gradient(90deg,#d32f2f,white);
+    background-attachment: fixed;
+    background-repeat: no-repeat; */
+    background-color: rgba(211, 47, 47, 0.2);
+}
+
+.shadow-large {
+    /* background-color: white; */
+    /* 0 1rem 3rem rgba($black, .175); */
+    box-shadow:
+        /* 0 0 2rem rgba(211, 47, 47, 0.7), */
+        0 0 3rem rgba(211, 47, 47, 0.7);
+    /* border: 1px solid #d32f2f; */
+    /* border-radius: 5px; */
+}
+
+.icon-large {
+    font-size: 8rem;
+}
+
+.border-5rd {
+    border-radius: .5rem;
+}
+
+.border-b-lr-5rd {
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+#id-txtarea-memo {
+    color: #d32f2f;
+}
+
+.txtarea-memo {
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    background-image:
+        -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px),
+        -webkit-linear-gradient(white calc(2rem), #ccc calc(2rem), #ccc calc(2rem + 3px), white calc(2rem + 3px));
+    background-size: 100% 100%, 100% 100%, 100% calc(2rem + 3px);
+    line-height: calc(2rem + 3px);
+    background-attachment: local;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 1);
+}
+
+.txtarea-memo:focus {
+    outline: none;
+    box-shadow: inset 0px 0px 1rem rgba(0, 0, 0, 1);
+}
+
+.memo-text-shadow {
+    text-shadow: .5rem 0px .75rem rgba(0, 0, 0, 1);
+}

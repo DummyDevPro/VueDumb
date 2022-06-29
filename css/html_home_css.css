@@ -1,7 +1,3 @@
-.border-btm {
-    border-bottom: 1px solid lightgray;
-}
-
 .zoom-in {
     animation: zoom-in 0.5s ease;
 }

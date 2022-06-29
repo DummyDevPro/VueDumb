@@ -2,6 +2,15 @@ a {
     text-decoration: none;
 }
 
-ul.root_ul > li:not(:last-child) { 
-    margin-bottom: 2rem;  
- }
+ul.root_ul>li:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.div-lang {
+    transition: transform .5s ease-out;
+}
+
+.div-lang:hover {
+    transform: scale(1.08);
+    cursor: pointer;
+}

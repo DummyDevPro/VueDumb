@@ -1,4 +1,9 @@
 .v-c {
-    margin-top: calc(48vh);
+    margin-top: calc(47vh);
     transform: translate(0, -50%);
+}
+
+
+h1 {
+    text-align: center;
 }

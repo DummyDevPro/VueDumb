@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../../img/gaigo-logo-only.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/profile_css.css">
+
+    <title>Profile</title>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <!-- Nav -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <img src="../../img/gaigo-logo-only.png" alt="Gaigo Logo" class="page-top-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav navbar-gaigo">
+                    <a class="nav-link" href="../frontend/coding_play_ground/code_pg_js.html">
+                        Coding Ground<sup>*JS</sup>
+                    </a>
+                    <a class="nav-link" href="">
+                        Coding Ground<sup>HTML & CSS</sup>
+                    </a>
+                    <a class="nav-link" href="../frontend/exam/js_exam.html"
+                        ng-class="loginStatus ? '' : 'disabled disabled-gaigo'">Exam</a>
+                    <!-- <a class="nav-link" href="pages/login/login.html">Log In</a> -->
+                    <!-- Button trigger modal -->
+                    <a ng-show="!loginStatus" class="nav-link" href="" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">
+                        Log In
+                    </a>
+                    <span class="username-table-wrapper" ng-show="loginStatus">
+                        <span class="username-table-cell-wrapper">
+                            <ruby class="username-table-cell-item">
+                                {{userNameJp}} <rp>(</rp>
+                                <rt>{{userNameEn}}</rt>
+                                <rp>)</rp>
+                            </ruby>
+                        </span>
+                    </span>
+                    <a ng-show="loginStatus" href="" class="nav-link active active-gaigo">MyProfile</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Profile & Memo -->
+        <section>
+            <div class="row g-4 mt-3">
+                <!-- Profile -->
+                <div class="col-12 col-md-6">
+                    <div class="bg-light shadow-large border-5rd">
+                        <!-- Image -->
+                        <div class="text-center">
+                            <i class="bi bi-person icon-large"></i>
+                        </div>
+
+                        <!-- Basic Details -->
+                        <form>
+                            <fieldset disabled="disabled">
+                                <div class="bg-dark d-flex flex-column p-4 gap-2 text-white border-5rd">
+
+                                    <!-- User Name -->
+                                    <div class="d-flex flex-column">
+                                        <label for="" class="form-label">User Name</label>
+                                        <input class="form-control" type="text" value="{{userNameEn}}">
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="d-flex flex-column">
+                                        <label for="" class="form-label">Email</label>
+                                        <input type="text" class="form-control" value="{{emailAddress}}">
+                                    </div>
+
+                                    <!-- Phone No -->
+                                    <div class="d-flex flex-column">
+                                        <label for="" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" value="{{phoneNo}}">
+                                    </div>
+
+                                    <!-- Gender -->
+                                    <div class="d-flex flex-column">
+                                        <label for="" class="form-label">Gender</label>
+                                        <i class="bi bi-gender-male fs-5" ng-show="gender == 1"></i>
+                                        <i class="bi bi-gender-female fs-5" ng-show="gender == 2"></i>
+                                        <i class="bi bi-gender-ambiguous" ng-show="gender == -1"></i>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Your Memo -->
+                <div class="col-12 col-md-6">
+                    <div>
+                        <form action="">
+                            <div class="col-12 text-center">
+                                <label for="id-txtarea-memo" class="fs-2 memo-text-shadow">MEMO</label>
+                                <textarea class="form-control txtarea-memo" name="txtarea-memo" id="id-txtarea-memo"
+                                    cols="30" rows="10" spellcheck="false"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exam History -->
+        <section>
+            <div class="col-12 bg-white mt-5 shadow-large border-5rd">
+                <p class="fs-2 text-center">Exam History</p>
+
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Exam Code</th>
+                            <th>Start Time</th>
+                            <th>Finish Time</th>
+                            <th>Total Marks</th>
+                            <th>Total Questions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="examDataHistory.length == 0" class="text-center">
+                            <td colspan="5">
+                                {{tableDataMessage}}
+                            </td>
+                        </tr>
+                        <tr ng-show="examDataHistory.length > 0" ng-repeat="exam in examDataHistory" class="text-center">
+                            <td>{{ exam['Exam_Code'] }}</td>
+                            <td>{{ exam['日付（スタート）'] }}</td>
+                            <td>{{ exam['日付（エンド）'] }}</td>
+                            <td>{{ exam['合計点数'] }}</td>
+                            <td>{{ exam['問題数'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <!-- Nav -->
+    <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="">
+                <img src="../../img/gaigo-logo-only.png" alt="Gaigo Logo" class="page-top-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav navbar-gaigo">
+                    <a class="nav-link" href="pages/frontend/coding_play_ground/code_pg_js.html">
+                        Coding Ground<sup>*JS</sup>
+                    </a>
+                    <a class="nav-link" href="">
+                        Coding Ground<sup>HTML & CSS</sup>
+                    </a>
+                    <a class="nav-link" href="pages/frontend/exam/js_exam.html"
+                        ng-class="loginStatus ? '' : 'disabled disabled-gaigo'">Exam</a>
+                    <span class="username-table-wrapper" ng-show="loginStatus">
+                        <span class="username-table-cell-wrapper">
+                            <ruby class="username-table-cell-item">
+                                {{userNameJp}} <rp>(</rp>
+                                <rt>{{userNameEn}}</rt>
+                                <rp>)</rp>
+                            </ruby>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script src="../../js/profile_js.js"></script>
+</body>
+
+</html>

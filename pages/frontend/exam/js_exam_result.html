@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../css/js_exam_result_css.css">
+    <link rel="shortcut icon" href="../../img/gaigo-logo-only.png" type="image/x-icon">
+    <title>JS Exam Result</title>
+</head>
+
+<body ng-app="myApp">
+    <div class="container-wrapper">
+        <div class="container v-c" ng-controller="myCtrl">
+            <section>
+                <h1>漢字試験結果</h1>
+            </section>
+            <section>
+                <div class="text-center m-3">
+                    <label class="fs-4">{{nameEn}}</label>
+                    <p class="fs-6">{{nameJp}}</p>
+                </div>
+                <div class="text-center m-3">
+                    <label class="fs-4">点数：</label>
+                    <label class="fs-4">{{yourMark}} / {{questionTotal}}</label>
+                </div>
+                <div class="text-center m-3">
+                    <label class="fs-4">開始</label>
+                    <p class="fs-6">{{startTime}}</p>
+                </div>
+                <div class="text-center m-3">
+                    <label class="fs-4">終了</label>
+                    <p class="fs-6">{{endTime}}</p>
+                </div>
+                <div class="text-center m-3">
+                    <hr>
+                    <p>
+                        If you want to see more details.<br>
+                        Go to <a href="../../profile/profile.html" class="text-decoration-none">profile page.</a>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script>
+        var fromExamPage = sessionStorage.getItem("fromExam");
+        var yourMark = sessionStorage.getItem("yourMark");
+        var nameEn = sessionStorage.getItem("nameEn");
+        var nameJp = sessionStorage.getItem("nameJp");
+        var startTime = sessionStorage.getItem("startDateTime");
+        var endTime = sessionStorage.getItem("endDateTime");
+        var questionTotal = sessionStorage.getItem("questionTotal");
+        var app = angular.module("myApp", []);
+
+        app.controller('myCtrl', function ($scope) {
+            if ((fromExamPage == null || fromExamPage == undefined) || !fromExamPage) {
+                alert('Unauthorized Access!');
+                window.location.replace('../../../../index.html');
+                return;
+            }
+            $scope.yourMark = yourMark;
+            $scope.nameEn = nameEn;
+            $scope.nameJp = nameJp;
+            $scope.startTime = startTime;
+            $scope.endTime = endTime;
+            $scope.questionTotal = questionTotal;
+        });
+    </script>
+</body>
+
+</html>

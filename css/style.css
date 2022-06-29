@@ -1,8 +1,133 @@
-html,body {
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
     font-size: 16px;
+    accent-color: #d32f2f;
 }
 
 body {
     margin: 0;
     padding: 0;
+}
+
+/* Border Bottom Style Start */
+.border-btm {
+    border-bottom: 1px solid lightgray;
+}
+
+/* Border Bottom Style End */
+
+/* Navbar Start */
+.bg-gaigo {
+    background-color: #d32f2f;
+}
+
+.bg-gaigo-pale {
+    background-color: rgba(211, 47, 47, 0.2);
+}
+
+.color-gaigo {
+    color: #d32f2f;
+}
+
+.navbar-gaigo>a {
+    list-style-type: none !important;
+    color: #d32f2f !important;
+    transition: transform .5s ease;
+    margin: .5rem;
+}
+
+.navbar-gaigo>a:hover {
+    font-weight: 900;
+    text-shadow: 2px 2px rgba(211, 47, 47, 0.2);
+    transform: scale(1.2);
+}
+
+.navbar-gaigo>a.disabled-gaigo {
+    color: gray !important;
+}
+
+.page-top-logo {
+    width: 48px;
+    margin: 0.25rem;
+    image-rendering: crisp-edges;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-gaigo>a:hover {
+        font-weight: 900;
+        text-shadow: 2px 2px rgba(211, 47, 47, 0.2);
+        transform: scale(1.2) translate(10%, 0);
+    }
+
+    .navbar-gaigo>.active-gaigo {
+        font-weight: 900;
+        text-shadow: 2px 2px rgba(211, 47, 47, 0.2);
+        transform: scale(1.2) translate(8%, 0%);
+        text-decoration: underline;
+
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-gaigo>.active-gaigo {
+        font-weight: 900;
+        text-shadow: 2px 2px rgba(211, 47, 47, 0.2);
+        transform: scale(1.2);
+        text-decoration: underline;
+
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+.username-table-wrapper {
+    display: table;
+    padding: 0px .25rem;
+    border-radius: 5px;
+}
+
+.username-table-cell-wrapper {
+    text-shadow: .5px .5px .5px #d32f2f;
+    display: table-cell;
+    vertical-align: middle;
+    text-decoration: underline double;
+    font-weight: bold;
+}
+
+.username-table-cell-item {
+    font-size: 1.25rem;
+}
+
+/* Navbar End */
+
+.rotate-arrow {
+    animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(360deg);
+    }
+
+    75% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }

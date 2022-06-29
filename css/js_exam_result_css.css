@@ -1,0 +1,19 @@
+html,body {
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container-wrapper {
+    height: inherit;
+    display: table;
+    margin: 0 auto;
+}
+
+.v-c {
+    display: table-cell;
+    vertical-align: middle;
+}
