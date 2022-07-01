@@ -1,0 +1,17 @@
+.text-area-place-holder-light-theme::placeholder {
+    color: gray;
+    opacity: 1;
+}
+
+.text-area-place-holder-dark-theme::placeholder {
+    color: white;
+    opacity: 1;   
+}
+
+textarea {
+    resize: none;
+}
+
+#leftCodeResult {
+    min-height: 30em;
+}

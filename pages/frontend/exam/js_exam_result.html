@@ -16,7 +16,7 @@
     <div class="container-wrapper">
         <div class="container v-c" ng-controller="myCtrl">
             <section>
-                <h1>漢字試験結果</h1>
+                <h1>試験結果</h1>
             </section>
             <section>
                 <div class="text-center m-3">
@@ -39,7 +39,7 @@
                     <hr>
                     <p>
                         If you want to see more details.<br>
-                        Go to <a href="../../profile/profile.html" class="text-decoration-none">profile page.</a>
+                        Go to <a href="" ng-click="goToProfile()" class="text-decoration-none">profile page.</a>
                     </p>
                 </div>
             </section>
@@ -76,6 +76,10 @@
             $scope.startTime = startTime;
             $scope.endTime = endTime;
             $scope.questionTotal = questionTotal;
+
+            $scope.goToProfile = function() {
+                window.location.replace('../../profile/profile.html#exam-history-id');
+            }
         });
     </script>
 </body>

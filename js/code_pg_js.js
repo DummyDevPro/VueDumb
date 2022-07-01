@@ -66,7 +66,6 @@ app.controller('myCtrl', function ($scope, $http, $timeout) {
     }
 
     $scope.jsCodeInputChangeListener = function () {
-        console.info($scope.loginStatus);
         collectLog = '';
         try {
             if (jsRawCode.value.toString().trim() != '') {

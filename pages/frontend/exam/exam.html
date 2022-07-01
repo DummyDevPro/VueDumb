@@ -34,18 +34,18 @@
                     <section ng-if="obj.answer_type == 'single_answer_input'" class="p-2">
                         <input ng-if="obj.answer_data_type == 'boolean'" type="text" class="form-control" id=""
                             ng-model="obj.answer_key" ng-change="obj.result_key = (sToB(obj.answer_key,obj.answer_value))"
-                            required>
+                            >
 
                         <input ng-if="obj.answer_data_type != 'boolean'" type="text" class="form-control" id=""
                             ng-model="obj.answer_key" ng-change="obj.result_key = (obj.answer_key == obj.answer_value)"
-                            required>
+                            >
                     </section>
 
                     <section ng-if="obj.answer_type == 'single_answer_rdo_select'" class="p-2"
                         ng-repeat="(rdoIndex,rdoValue) in obj.probable_answer_value.split(':')">
                         <input class="form-check-input" type="radio" name="question-name-{{topIndex}}"
                             id="question-id-{{topIndex}}-{{rdoIndex}}" ng-value="rdoValue" ng-model="obj.answer_key"
-                            ng-change="obj.result_key = (obj.answer_key == obj.answer_value)" {{ rdoIndex == 0 ? required : ''}}>
+                            ng-change="obj.result_key = (obj.answer_key == obj.answer_value)">
                             <!-- {{ rdoIndex == 0 ? required : ''}} -->
                         <label for="question-id-{{topIndex}}-{{rdoIndex}}"
                             class="form-check-label">{{rdoValue}}</label>

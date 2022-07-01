@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="../../../css/style.css">
-    <link rel="stylesheet" href="../../../css/code_pg_js_css.css">
+    <link rel="stylesheet" href="../../../css/code_pg_html_css_css.css">
     <title>JS | Coding Ground</title>
 </head>
 
@@ -28,8 +28,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav navbar-gaigo">
-                    <a class="nav-link active active-gaigo" aria-current="page" href="#">Coding Ground<sup>*JS</sup></a>
-                    <a class="nav-link" href="coding_pg_html_css.html">
+                    <a class="nav-link" aria-current="page" href="code_pg_js.html">Coding Ground<sup>*JS</sup></a>
+                    <a class="nav-link active active-gaigo" href="#">
                         Coding Ground<sup>HTML & CSS</sup>
                     </a>
                     <a class="nav-link" href="../exam/js_exam.html"
@@ -57,34 +57,76 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <h1 class="border-btm mt-2 mb-2">JS Coding Ground</h1>
+            <h1 class="border-btm mt-2 mb-4">HTML&CSS Coding Ground</h1>
         </header>
 
         <main>
-            <form>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex flex-column">
-                        <div class="form-group p-2">
-                            <abbr title="Ctrl + Enter"><button type="button" ng-click="jsCodeInputChangeListener()"
-                                    class="btn btn-primary">Run [ Ctrl + Enter ]</button></abbr>
-                            <button type="reset" class="btn btn-danger">Reset</button>
-                        </div>
-                        <div class="form-group flex-grow-1 d-flex flex-column">
-                            <textarea class="form-control flex-grow-1 p-2" name="js-input" id="id-js-input" rows="10"
-                                spellcheck="false"
-                                placeholder="let a = 10;&#10;let b = 20;&#10;let sum = a + b;&#10;&#10;console.log(sum);"></textarea>
-                        </div>
+            <section class="pb-4 pt-4 bg-secondary bg-opacity-25" id="layoutBg">
+                <div class="container-fluid">
+                    <div class="d-flex">
+                        <!-- HTML,CSS Tabs -->
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-html-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-html" type="button" role="tab">HTML</button>
+                                <button class="nav-link" id="nav-css-tab" data-bs-toggle="tab" data-bs-target="#nav-css"
+                                    type="button" role="tab">CSS</button>
+                            </div>
+                        </nav>
+                        <!-- Theme Mode Change Button -->
+                        <a class="btn btn-reset btn-lg" ng-click="changeThemeMode();">
+                            <i class="bi bi-lightbulb-fill text-dark" id="themeChangeIconId"></i>
+                        </a>
+                        <!-- Layout Orientation Change Button -->
+                        <a class="btn btn-reset btn-lg d-none d-sm-none d-md-block"
+                            ng-click="changeLayoutOrientation();">
+                            <i class="bi bi-symmetry-vertical text-dark" id="layoutChangeIconId"></i>
+                        </a>
                     </div>
 
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                        <div class="form-group p-2">
-                            <button type="button" ng-click="clearAllLog()" class="btn btn-danger">Clear Log</button>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6" id="leftCodeInputDivId">
+                            <div class="tab-content" id="nav-tabContent">
+                                <!-- HTML -->
+                                <div class="tab-pane fade show active" id="nav-html" role="tabpanel">
+                                    <form>
+                                        <div class="form-group">
+                                            <textarea spellcheck="false"
+                                                class="form-control h-100 bg-white p-1 text-area-place-holder-light-theme"
+                                                id="leftHTMLCodeInput" rows="20" ng-init="htmlSourceCode = ''"
+                                                ng-model="htmlSourceCode" ng-change="codeHTMLInputChange()"
+                                                onkeypress=""
+                                                placeholder="&lt;h1&gt;Welcome To Coding Ground&lt;/h1&gt;&#10;&lt;p&gt;Write down HTML Element...&lt;/p&gt;"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- CSS -->
+                                <div class="tab-pane fade" id="nav-css" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab">
+                                    <form>
+                                        <div class="form-group">
+                                            <textarea spellcheck="false"
+                                                class="form-control h-100 bg-white p-1 text-area-place-holder-light-theme"
+                                                id="leftCSSCodeInput" rows="20" ng-init="cssSourceCode = ''"
+                                                ng-model="cssSourceCode" ng-change="codeCSSInputChange()"
+                                                placeholder="body {&#10;    background-color:blue;&#10;}" onkeypress="">
+                                </textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group border border-secondary bg-white js-output-style" id="log">
+                        <div class="col-12 col-md-6" id="leftCodeResultDivId">
+                            <iframe id="leftCodeResult" src="about:blank" class="w-100 h-100 bg-light p-0"></iframe>
                         </div>
                     </div>
                 </div>
-            </form>
+            </section>
+            <section>
+                <div class="d-flex flex-column">
+
+                </div>
+            </section>
         </main>
     </div>
 
@@ -127,7 +169,7 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-    <script src="../../../js/code_pg_js.js"></script>
+    <script src="../../../js/code_pg_html_css_js.js"></script>
 </body>
 
 </html>
