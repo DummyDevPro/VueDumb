@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../../../img/gaigo-logo-only.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../css/if_condition_css.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <title>JS | Comparison Operator</title>
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="../../../index.html">
+                <img src="../../../img/gaigo-logo-only.png" alt="Gaigo Logo" class="page-top-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav navbar-gaigo">
+                    <a class="nav-link" href="../coding_play_ground/code_pg_js.html">
+                        Coding Ground<sup>*JS</sup>
+                    </a>
+                    <a class="nav-link" href="../coding_play_ground/coding_pg_html_css.html">
+                        Coding Ground<sup>HTML & CSS</sup>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <!-- Is Equal Start -->
+        <section class="d-none d-lg-block">
+            <h2 class="bg-gaigo text-white m-0 p-3 pb-0">
+                is equal operator (==)
+            </h2>
+            <p class="bg-gaigo text-white m-0 p-3">
+                * Make comparison between two components(participants) which are equal? <br>
+                * If the two variable are equal, return <mark>true</mark> otherwise <mark>false</mark>
+            </p>
+            <div class="row g-2">
+                <div class="col-lg-6">
+                    <div class="bg-light p-3">
+                        <span class="fs-5 d-block border-bottom border-2 mb-3">
+                            TRUE example
+                        </span>
+                        <code class="">
+                            let numOne = 10; <br>
+                            let numTwo = 10; <br>
+                            let isEqual = (numOne == numTwo); <br><br>
+                            // Let see the output <br>
+                            console.log(isEqual); // the output will be true
+                        </code>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light p-3">
+                        <span class="fs-5 d-block border-bottom border-2 mb-3">
+                            ★TRUE example★
+                        </span>
+                        <code class="">
+                            let numOne = 10; <br>
+                            let strNum = '10'; <br>
+                            let isEqual = (numOne == strNum); <br><br>
+                            // Let see the output <br>
+                            console.log(isEqual); // the output will be true
+                        </code>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light p-3">
+                        <span class="fs-5 d-block border-bottom border-2 mb-3">
+                            FALSE example
+                        </span>
+                        <code class="">
+                            let numOne = 20; <br>
+                            let numTwo = 10; <br>
+                            let isEqual = (numOne == numTwo); <br><br>
+                            // Let see the output <br>
+                            console.log(isEqual); // the output will be false
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="d-block d-lg-none">
+            <h2 class="bg-gaigo text-white m-0 p-3 pb-0">
+                is equal operator (==)
+            </h2>
+            <p class="bg-gaigo text-white m-0 p-3">
+                * Make comparison between two components(participants) which are equal? <br>
+                * If the two variable are equal, return <mark>true</mark> otherwise <mark>false</mark>
+            </p>
+            <ul class="nav nav-tabs bg-gaigo ps-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="equal-true-tab" data-bs-toggle="tab"
+                        data-bs-target="#equal-true" type="button" role="tab" aria-controls="equal-true"
+                        aria-selected="true">TRUE example</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="equal-false-tab" data-bs-toggle="tab" data-bs-target="#equal-false"
+                        type="button" role="tab" aria-controls="equal-false" aria-selected="false">FALSE
+                        example</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="str-equal-true-tab" data-bs-toggle="tab"
+                        data-bs-target="#str-equal-true" type="button" role="tab" aria-controls="str-equal-true"
+                        aria-selected="true">★TRUE example★</button>
+                </li>
+            </ul>
+            <div class="tab-content bg-light p-3" id="myTabContent">
+                <div class="tab-pane fade show active" id="equal-true" role="tabpanel" aria-labelledby="equal-true-tab">
+                    <code class="">
+                        let numOne = 10; <br>
+                        let numTwo = 10; <br>
+                        let isEqual = (numOne == numTwo); <br><br>
+                        // Let see the output <br>
+                        console.log(isEqual); // the output will be true
+                    </code>
+                </div>
+                <div class="tab-pane fade" id="str-equal-true" role="tabpanel" aria-labelledby="str-equal-true-tab">
+                    <code class="">
+                        let numOne = 10; <br>
+                        let strNum = '10'; <br>
+                        let isEqual = (numOne == strNum); <br><br>
+                        // Let see the output <br>
+                        console.log(isEqual); // the output will be true
+                    </code>
+                </div>
+                <div class="tab-pane fade" id="equal-false" role="tabpanel" aria-labelledby="equal-false-tab">
+                    <code class="">
+                        let numOne = 20; <br>
+                        let numTwo = 10; <br>
+                        let isEqual = (numOne == numTwo); <br><br>
+                        // Let see the output <br>
+                        console.log(isEqual); // the output will be false
+                    </code>
+                </div>
+            </div>
+        </section>
+        <!-- Is Equal End -->
+
+        <!-- Is Not Equal Start -->
+        <section class="d-none d-lg-block">
+            <h2 class="bg-gaigo text-white m-0 p-3 pb-0">
+                is not equal operator (!=)
+            </h2>
+            <p class="bg-gaigo text-white m-0 p-3">
+                * Make comparison between two components(participants) which are not equal? <br>
+                * If the two variable are not equal, return <mark>true</mark> otherwise <mark>false</mark>
+            </p>
+            <div class="row g-2">
+                <div class="col-lg-6">
+                    <div class="bg-light p-3">
+                        <span class="fs-5 d-block border-bottom border-2 mb-3">
+                            TRUE example
+                        </span>
+                        <code class="">
+                            let numOne = 30; <br>
+                            let numTwo = 10; <br>
+                            let isNotEqual = (numOne != numTwo); <br><br>
+                            // Let see the output <br>
+                            console.log(isNotEqual); // the output will be true
+                        </code>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light p-3">
+                        <span class="fs-5 d-block border-bottom border-2 mb-3">
+                            FALSE example
+                        </span>
+                        <code class="">
+                            let numOne = 10; <br>
+                            let numTwo = 10; <br>
+                            let isNotEqual = (numOne != numTwo); <br><br>
+                            // Let see the output <br>
+                            console.log(isNotEqual); // the output will be false
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="d-block d-lg-none">
+            <h2 class="bg-gaigo text-white m-0 p-3 pb-0">
+                is equal operator (==)
+            </h2>
+            <p class="bg-gaigo text-white m-0 p-3">
+                * Make comparison between two components(participants) which are not equal? <br>
+                * If the two variable are not equal, return <mark>true</mark> otherwise <mark>false</mark>
+            </p>
+            <ul class="nav nav-tabs bg-gaigo ps-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="not-equal-true-tab" data-bs-toggle="tab"
+                        data-bs-target="#not-equal-true" type="button" role="tab" aria-controls="not-equal-true"
+                        aria-selected="true">TRUE example</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="not-equal-false-tab" data-bs-toggle="tab"
+                        data-bs-target="#not-equal-false" type="button" role="tab" aria-controls="not-equal-false"
+                        aria-selected="false">FALSE
+                        example</button>
+                </li>
+            </ul>
+            <div class="tab-content bg-light p-3" id="myTabContent">
+                <div class="tab-pane fade show active" id="not-equal-true" role="tabpanel"
+                    aria-labelledby="not-equal-true-tab">
+                    <code class="">
+                        let numOne = 30; <br>
+                        let numTwo = 10; <br>
+                        let isNotEqual = (numOne != numTwo); <br><br>
+                        // Let see the output <br>
+                        console.log(isNotEqual); // the output will be true
+                    </code>
+                </div>
+                <div class="tab-pane fade" id="not-equal-false" role="tabpanel" aria-labelledby="not-equal-false-tab">
+                    <code class="">
+                        let numOne = 10; <br>
+                        let numTwo = 10; <br>
+                        let isNotEqual = (numOne != numTwo); <br><br>
+                        // Let see the output <br>
+                        console.log(isNotEqual); // the output will be false
+                    </code>
+                </div>
+            </div>
+        </section>
+        <!-- Is Not Equal End -->
+
+        <!-- Is Not Equal Start -->
+        <section class="d-none d-lg-block">
+            <h2 class="bg-gaigo text-white m-0 p-3 pb-0">
+                is not equal operator (!=)
+            </h2>
+            <p class="bg-gaigo text-white m-0 p-3">
+                * Make comparison between two components(participants) which are not equal? <br>
+                * If the two variable are not equal, return <mark>true</mark> otherwise <mark>false</mark>
+            </p>
+            <div class="row g-2">
+                <div class="col-lg-6">
+                    <div class="bg-light p-3">
+                        <span class="fs-5 d-block border-bottom border-2 mb-3">
+                            TRUE example
+                        </span>
+                        <code class="">
+                            let numOne = 30; <br>
+                            let numTwo = 10; <br>
+                            let isNotEqual = (numOne != numTwo); <br><br>
+                            // Let see the output <br>
+                            console.log(isNotEqual); // the output will be true
+                        </code>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-light p-3">
+                        <span class="fs-5 d-block border-bottom border-2 mb-3">
+                            FALSE example
+                        </span>
+                        <code class="">
+                            let numOne = 10; <br>
+                            let numTwo = 10; <br>
+                            let isNotEqual = (numOne != numTwo); <br><br>
+                            // Let see the output <br>
+                            console.log(isNotEqual); // the output will be false
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="d-block d-lg-none">
+            <h2 class="bg-gaigo text-white m-0 p-3 pb-0">
+                is equal operator (==)
+            </h2>
+            <p class="bg-gaigo text-white m-0 p-3">
+                * Make comparison between two components(participants) which are not equal? <br>
+                * If the two variable are not equal, return <mark>true</mark> otherwise <mark>false</mark>
+            </p>
+            <ul class="nav nav-tabs bg-gaigo ps-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="not-equal-true-tab" data-bs-toggle="tab"
+                        data-bs-target="#not-equal-true" type="button" role="tab" aria-controls="not-equal-true"
+                        aria-selected="true">TRUE example</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="not-equal-false-tab" data-bs-toggle="tab"
+                        data-bs-target="#not-equal-false" type="button" role="tab" aria-controls="not-equal-false"
+                        aria-selected="false">FALSE
+                        example</button>
+                </li>
+            </ul>
+            <div class="tab-content bg-light p-3" id="myTabContent">
+                <div class="tab-pane fade show active" id="not-equal-true" role="tabpanel"
+                    aria-labelledby="not-equal-true-tab">
+                    <code class="">
+                        let numOne = 30; <br>
+                        let numTwo = 10; <br>
+                        let isNotEqual = (numOne != numTwo); <br><br>
+                        // Let see the output <br>
+                        console.log(isNotEqual); // the output will be true
+                    </code>
+                </div>
+                <div class="tab-pane fade" id="not-equal-false" role="tabpanel" aria-labelledby="not-equal-false-tab">
+                    <code class="">
+                        let numOne = 10; <br>
+                        let numTwo = 10; <br>
+                        let isNotEqual = (numOne != numTwo); <br><br>
+                        // Let see the output <br>
+                        console.log(isNotEqual); // the output will be false
+                    </code>
+                </div>
+            </div>
+        </section>
+        <!-- Is Not Equal End -->
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>

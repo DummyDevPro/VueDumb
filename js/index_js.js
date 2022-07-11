@@ -90,4 +90,18 @@ app.controller('myCtrl', function ($scope, $http, $timeout) {
             console.log(error);
         });
     }
+
+    $scope.goNext = function (where) {
+        switch (where) {
+            case 'html':
+                break;
+            case 'css':
+                break;
+            case 'js':
+                window.location.href = 'pages/frontend/javascript/js_home.html';
+                break;
+            case 'java':
+                break;
+        }
+    }
 });
