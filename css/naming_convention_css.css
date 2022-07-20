@@ -1,0 +1,44 @@
+ul.hyphen-marker {
+    margin: 0;
+    padding-left: .5rem;
+    list-style: none;
+
+    /* list-style-image: url('../img/star-fill.svg'); */
+}
+
+ul.hyphen-marker li::marker {
+    content: '- ';
+}
+
+ul.star-marker {
+    margin: 0;
+    padding: 0;
+    padding-left: 1rem;
+    list-style: none;
+
+    list-style-image: url('../img/star-fill.svg');
+}
+
+ul.star-marker > li + li {
+    margin-top: .5rem;
+}
+
+section + section {
+    margin-top: 1rem;
+}
+
+.floating-box {
+    display: inline-block;
+    position: fixed;
+    border: 1px solid gray;
+    padding: .5rem;
+
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: .8rem;
+    background-color: aliceblue;
+}
+
+.floating-box img {
+    width: 48px;
+}

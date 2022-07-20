@@ -9,19 +9,12 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" href="../../../img/gaigo-logo-only.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../../css/style.css">
     <link rel="stylesheet" href="../../../css/js_home_css.css">
+    <link rel="stylesheet" href="../../../css/style.css">
     <title>JS | Home</title>
 </head>
 
 <body>
-
-    <div class="bg-logo-wrapper">
-        <div class="bg-logo-wrapper-inner">
-            <img src="../../../img/javascript_logo.svg" alt="" class="js-logo">
-        </div>
-    </div>
-
     <!-- Nav -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
@@ -45,106 +38,131 @@
         </div>
     </nav>
 
-    <main class="container">
-        <section class="row g-2 mt-4 fs-medium" style="box-sizing: border-box;">
-            <div class="col-md-6">
-                <div class="box">
-                    <h5 class="u-line">
-                        JS : Variable
-                    </h5>
-                </div>
+    <main class="d-flex" id="main-content">
+
+        <div class="show-drawer-floating-icon" onclick="drawerShowHide(this)" title="click to hide drawer">
+            <i class="bi bi-caret-left-fill" id="icon-sh"></i>
+        </div>
+
+        <aside id="left-aside-mobile" class="col-8 left-aside-mobile-d-sh">
+            <div class="d-flex flex-column left-aside-mobile-content">
+                <a href="" class="item link-active-gaigo">JS : Home</a>
+                <a href="" class="item">JS : Variable</a>
+                <a href="" class="item">JS : Data Types</a>
+                <a href="" class="item">JS : Arithmetic Operator</a>
+                <a href="" class="item">JS : Assignment Operator</a>
+                <a href="js_comparison_operator.html" class="item">JS : Comparison Operator</a>
+                <a href="js_if_condition.html" class="item">JS : Control Process Flow</a>
             </div>
-            <div class="col-md-6">
-                <div class="box">
-                    <h5 class="u-line">
-                        JS : Data Types
-                    </h5>
-                </div>
+        </aside>
+
+        <aside id="left-aside" class="col-3 d-none d-md-block box-right-shadow">
+            <div class="d-flex flex-column left-aside-content">
+                <a href="" class="item link-active-gaigo">JS : Home</a>
+                <a href="" class="item">JS : Variable</a>
+                <a href="" class="item">JS : Data Types</a>
+                <a href="" class="item">JS : Arithmetic Operator</a>
+                <a href="" class="item">JS : Assignment Operator</a>
+                <a href="js_comparison_operator.html" class="item">JS : Comparison Operator</a>
+                <a href="js_if_condition.html" class="item">JS : Control Process Flow</a>
             </div>
-            <div class="col-md-6">
-                <div class="box">
-                    <h5 class="u-line">
-                        JS : Arithmetic Operator
-                    </h5>
+        </aside>
+
+        <div id="middle-left-wrapper" class="d-flex col-12 col-md-9">
+            <section id="middle-content" class="col-12 col-md-8 p-3">
+                <div class="" id="type-one">
+                    <h4 class="bg-gaigo text-white m-0 p-3">
+                        #What is JavaScript?
+                    </h4>
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <div class="bg-light p-3">
+                                <span class="fs-5 d-block mb-3">
+                                    JavaScript is a client-side scripting language which
+                                    interacts webpage to become lively.
+                                </span>
+                                <span class="fs-5 d-block mb-3">
+                                    HTML(webpage) are static(static means just viewable page can't take actions likes
+                                    button-click).
+                                </span>
+                                <span class="fs-5 d-block mb-3">
+                                    With the help of JavaScript, HTML(webpage) are more lively and users interactable.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="box">
-                    <h5 class="u-line">
-                        JS : Assignment Operator
-                    </h5>
+
+                <div class="" id="type-two">
+                    <h4 class="bg-gaigo text-white m-0 p-3">
+                        #Simple JavaScript Program
+                    </h4>
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <div class="bg-light p-3">
+                                <span class="fs-5 d-block mb-3">
+                                    JavaScript can write and apply in HTML(webpage) by two ways.
+                                </span>
+                                <span class="fs-5 d-block mb-3 border-bottom border-2" id="type-two-one">
+                                    #Internal Structure
+                                </span>
+                                <code>
+                                    <pre id="smaple-js-internal-structure"></pre>
+                                </code>
+                                <span class="fs-5 d-block border-bottom border-2" id="type-two-two">
+                                    #External Structure
+                                </span>
+                                <label class="fs-6 d-block mb-3">
+                                    1) create HTML file <br>
+                                    2) create JavaScript file <br>
+                                    3) and import JavaScript file 
+                                </label>
+                                <span class="fs-6 d-block">
+                                    1) create HTML file named (index.html) and write this content.
+                                </span>
+                                <code>
+                                    <pre id="smaple-js-external-structure"></pre>
+                                </code>
+                                <span class="fs-6 d-block">
+                                    2) create JavaScript file named (index.js) and write this content.
+                                </span>
+                                <code>
+                                    <pre>document.write('This is my first page.');</pre>
+                                </code>
+                                <span class="fs-6 d-block">
+                                    3) import JavaScript file.Writes below code inside HTML.
+                                </span>
+                                <code>
+                                    <pre>&lt;script src="index.js"&gt;&lt;/script&gt;</pre>
+                                </code>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="box" onclick="changeDetailPage('comparison-operator')">
-                    <h5 class="u-line">
-                        JS : Comparison Operator
-                    </h5>
-                    <span>
-                        * Needs two components for compare.
-                    </span>
-                    <ul>
-                        <li>
-                            is equal operator ( == )
-                        </li>
-                        <li>
-                            is not equal operator ( != )
-                        </li>
-                        <li>
-                            is equal operator strictly ( === )
-                        </li>
-                        <li>
-                            is not equal operator strictly ( !== )
-                        </li>
-                        <li>
-                            is greater than operator ( &gt; )
-                        </li>
-                        <li>
-                            is less than operator ( &lt; )
-                        </li>
-                        <li>
-                            is greater than equal operator ( &gt;= )
-                        </li>
-                        <li>
-                            is less than equal operator ( &lt;= )
-                        </li>
-                    </ul>
+            </section>
+
+            <aside id="right-aside" class="col-4 d-none d-md-block box-left-shadow">
+                <div class="d-flex flex-column index-content-list">
+                    <a href="" my-href="type-one" onclick="moveToView(event,this)">#What is JavaScript?</a>
+                    <a href="" my-href="type-two" onclick="moveToView(event,this)">#Simple JavaScript Program</a>
+                    <a href="" my-href="type-two-one" onclick="moveToView(event,this)" class="ps-4">#Internal Structure</a>
+                    <a href="" my-href="type-two-two" onclick="moveToView(event,this)" class="ps-4">#External Structure</a>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="box" onclick="changeDetailPage('if-condition')">
-                    <h5 class="u-line">
-                        JS : Control Process Flow
-                    </h5>
-                    <span>
-                        * We already learnt about javascript code processing. <br>
-                        * Javascript code are processed line by line orderly.
-                        <br>
-                        * Sometime ommits due to <strong>flow control</strong>.
-                        <br>
-                        * e.g. Javascript code is not satisfied the <strong>if condition</strong> , can't process the
-                        inside
-                        <strong>if condition</strong>.
-                    </span>
-                    <ul>
-                        <li>
-                            if Condition
-                        </li>
-                        <li>
-                            if ... else Condition
-                        </li>
-                        <li>
-                            if ... else if Condition
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </aside>
+        </div>
+
     </main>
+
+    <footer>
+        <section class="one"></section>
+        <section class="two"></section>
+        <section class="three"></section>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
+
     <script src="../../../js/js_home_js.js"></script>
 </body>
 

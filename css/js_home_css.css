@@ -1,23 +1,147 @@
-.box {
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid #d32f2f;
-    border-radius: .5rem;
-    min-height: 56px;
-    max-height: fit-content;
-    padding: .5rem;
-    color: #d32f2f;
+#main-content {
+    position: relative;
+    --height: calc(100vh - (88.48px));
+    height: var(--height);
 }
 
-.box:hover {
-    box-shadow: inset 0 0 1.5rem rgba(211, 47, 47, 0.5);
-    
+.show-drawer-floating-icon {
+    position: absolute;
+    top: 25%;
+    /* top: calc(var(--height) / 2); */
+
+    background-color: white;
+    color: var(--color-gaigo);
+
+    font-size: 1.5rem;
+    padding: .75rem .25rem;
+    padding-left: 0px;
+
+    border-top-right-radius: 100% 75%;
+    border-bottom-right-radius: 100% 75%;
+
+    box-shadow: 0rem 0rem .75rem var(--color-gaigo);
+    z-index: 1;
+}
+
+.show-drawer-floating-icon:hover {
+    color: var(--color-gaigo-hover);
     cursor: pointer;
+    animation-name: gaigo-hover-animation;
+    animation-duration: .35s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
 
-.u-line {
-    text-decoration: underline;
+@keyframes gaigo-hover-animation {
+    from {
+        background-color: white;
+    }
+
+    to {
+        background-color: var(--color-gaigo);
+    }
 }
 
-.fs-medium {
-    font-size: 1.15rem;
+#left-aside {
+    height: var(--height);
+    overflow: scroll;
+}
+
+.left-aside-d-sh {
+    display: none !important;
+}
+
+#left-aside::-webkit-scrollbar {
+    display: none;
+}
+
+.left-aside-content a.item {
+    text-decoration: none;
+    padding: .75rem;
+    padding-left: 2rem;
+    color: var(--color-gaigo);
+}
+
+.left-aside-content a.item:hover {
+    color: var(--color-gaigo-hover);
+    animation-name: gaigo-hover-animation;
+    animation-duration: .35s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+#left-aside-mobile {
+    position: absolute;
+    height: var(--height);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.left-aside-mobile-d-sh {
+    display: none !important;
+}
+
+#left-aside-mobile::-webkit-scrollbar {
+    display: none;
+}
+
+.left-aside-mobile-content a.item {
+    text-decoration: none;
+    padding: .75rem;
+    padding-left: 2rem;
+    color: var(--color-gaigo);
+}
+
+.left-aside-mobile-content a.item:hover {
+    color: var(--color-gaigo-hover);
+    animation-name: gaigo-hover-animation;
+    animation-duration: .35s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+#middle-content::-webkit-scrollbar {
+    display: none;
+}
+
+#middle-content {
+    overflow: scroll;
+    box-sizing: border-box;
+}
+
+#right-aside {
+    /* background-color: blue; */
+}
+
+footer section.one {
+    height: 300px;
+    background-color: var(--color-gaigo);
+}
+
+footer section.two {
+    height: 300px;
+    background-color: white;
+}
+
+footer section.three {
+    height: 300px;
+    background-color: var(--color-gaigo);
+}
+
+.index-content-list a {
+    color: var(--color-gaigo);
+    padding: .25rem 1rem;
+}
+
+.box-right-shadow {
+    box-shadow: 0.5rem 0rem 0.5rem -0.5rem var(--color-gaigo);
+}
+
+.box-left-shadow {
+    box-shadow: -0.5rem 0rem 0.5rem -0.5rem var(--color-gaigo);
+}
+
+.link-active-gaigo {
+    pointer-events: none;
+    background-color: var(--color-gaigo);
+    color: white !important;
 }

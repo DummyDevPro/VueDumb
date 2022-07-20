@@ -4,8 +4,28 @@ code {
     font-size: 1.15rem;
 }
 
-main>section+section {
+main section>div+div {
     margin-top: 1rem;
+}
+
+main section {
+    flex-basis: 70%;
+}
+
+main aside {
+    flex-basis: 30%;
+}
+
+.index-content {
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.index-content a {
+    /* text-decoration: none; */
+    color: #d32f2f;
+    padding: .25rem 1rem;
 }
 
 mark {
@@ -24,6 +44,7 @@ span {
     color: black;
 }
 
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
     color: #d32f2f;
 }

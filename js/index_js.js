@@ -102,6 +102,9 @@ app.controller('myCtrl', function ($scope, $http, $timeout) {
                 break;
             case 'java':
                 break;
+            case 'naming-convention':
+                window.location.href = 'pages/common/naming_convention.html';
+                break
         }
     }
 });

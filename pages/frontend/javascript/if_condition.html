@@ -17,7 +17,7 @@
 <body>
 
     <!-- Nav -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
+    <!-- <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="../../../index.html">
                 <img src="../../../img/gaigo-logo-only.png" alt="Gaigo Logo" class="page-top-logo">
@@ -37,199 +37,211 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
-    <main class="container mt-4">
-        <section class="">
-            <h2 class="bg-gaigo text-white m-0 p-3">
-                #JS : if condition
-            </h2>
-            <div class="row g-2">
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is true, does process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// process <br>
-                            }
-                        </code>
+    <!-- <main class="container mt-4"> -->
+    <main class="ms-4 me-4 d-flex">
+        <!-- <section class="col-9"> -->
+        <section class="mt-2">
+            <div class="" id="type-one">
+                <h2 class="bg-gaigo text-white m-0 p-3">
+                    #JS : if condition
+                </h2>
+                <div class="row g-2">
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is true, does process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is false, skips process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// process <br>
+                                }
+                            </code>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="" id="type-two">
+                <h2 class="bg-gaigo text-white m-0 p-3">
+                    #JS : if ... else condition
+                </h2>
+                <div class="row g-2">
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is true, does if-process. <br>
+                                Skips else-process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// if-process <br>
+                                } else { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// else-process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
 
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is false, skips process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// process <br>
-                            }
-                        </code>
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is false, skips if-process. <br>
+                                Does else-process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
+                                } else { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// else-process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="" id="type-three">
+                <h2 class="bg-gaigo text-white m-0 p-3">
+                    #JS : if ... else if condition
+                </h2>
+                <div class="row g-2">
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is true, does if-process. <br>
+                                Skips else-if-process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// if-process <br>
+                                } else if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is false, skips if-process. <br>
+                                And if <mark>else if condition</mark> is true, does else-if-process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
+                                } else if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// else-if-process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is false, skips if-process. <br>
+                                And if <mark>else if condition</mark> is false, skips else-if-process too. <br>
+                                Does nothing.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
+                                } else if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="" id="type-four">
+                <h2 class="bg-gaigo text-white m-0 p-3">
+                    #JS : if ... else if ... else condition
+                </h2>
+                <div class="row g-2">
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is true, does if-process. <br>
+                                Skips else-if-process and else-process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// if-process <br>
+                                } else if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
+                                } else { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// else-process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is false, skips if-process. <br>
+                                And if <mark>else if condition</mark> is true, does else-if-process. <br>
+                                Skips else-process too.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
+                                } else if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// else-if-process <br>
+                                } else { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// else-process <br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="bg-light p-3">
+                            <span class="fs-5 d-block border-bottom border-2 mb-3">
+                                If <mark>if condition</mark> is false, skips if-process. <br>
+                                And if <mark>else if condition</mark> is false, skips else-if-process too. <br>
+                                Does else-process.
+                            </span>
+                            <code class="">
+                                if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
+                                } else if(boolean-condition) { <br>
+                                &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
+                                } else { <br>
+                                &emsp;&emsp;&emsp;&emsp;✔　// else-process <br>
+                                }
+                            </code>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="">
-            <h2 class="bg-gaigo text-white m-0 p-3">
-                #JS : if ... else condition
-            </h2>
-            <div class="row g-2">
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is true, does if-process. <br>
-                            Skips else-process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// if-process <br>
-                            } else { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// else-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is false, skips if-process. <br>
-                            Does else-process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
-                            } else { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// else-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
+        <aside>
+            <div class="d-flex flex-column index-content">
+                <a href="#type-one">#JS : if condition</a>
+                <a href="#type-two">#JS : if ... else condition</a>
+                <a href="#type-three">#JS : if ... else if condition</a>
+                <a href="#type-four">#JS : if ... else if ... else condition</a>
             </div>
-        </section>
-        <section class="">
-            <h2 class="bg-gaigo text-white m-0 p-3">
-                #JS : if ... else if condition
-            </h2>
-            <div class="row g-2">
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is true, does if-process. <br>
-                            Skips else-if-process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// if-process <br>
-                            } else if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is false, skips if-process. <br>
-                            And if <mark>else if condition</mark> is true, does else-if-process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
-                            } else if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// else-if-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is false, skips if-process. <br>
-                            And if <mark>else if condition</mark> is false, skips else-if-process too. <br>
-                            Does nothing.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
-                            } else if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="">
-            <h2 class="bg-gaigo text-white m-0 p-3">
-                #JS : if ... else if ... else condition
-            </h2>
-            <div class="row g-2">
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is true, does if-process. <br>
-                            Skips else-if-process and else-process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// if-process <br>
-                            } else if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
-                            } else { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// else-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is false, skips if-process. <br>
-                            And if <mark>else if condition</mark> is true, does else-if-process. <br>
-                            Skips else-process too.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
-                            } else if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// else-if-process <br>
-                            } else { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// else-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="bg-light p-3">
-                        <span class="fs-5 d-block border-bottom border-2 mb-3">
-                            If <mark>if condition</mark> is false, skips if-process. <br>
-                            And if <mark>else if condition</mark> is false, skips else-if-process too. <br>
-                            Does else-process.
-                        </span>
-                        <code class="">
-                            if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// if-process <br>
-                            } else if(boolean-condition) { <br>
-                            &emsp;&emsp;&emsp;&emsp;✖　// else-if-process <br>
-                            } else { <br>
-                            &emsp;&emsp;&emsp;&emsp;✔　// else-process <br>
-                            }
-                        </code>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </aside>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
 
 </body>
 
